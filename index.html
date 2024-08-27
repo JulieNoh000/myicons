@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <title>Responsive Icons</title>
+        <style>
+            .row{
+                width:720px;
+                margin: 10px auto 10px auto ;
+            }
+            .image-container {
+                display: table-cell;
+                vertical-align: middle;
+                padding:20px;
+            }
+        </style>
+    </head>
+    <title>Icons</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 200px); 
+            gap: 20px; 
+            justify-content: center; 
+        }
+        .icon-item img {
+            width: 200px; 
+            height: 200px;
+            border-radius: 10px;
+            transition: transform 0.0s ease, opacity 0.0s ease;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="icon-grid">
+        <div class="icon-item" data-hover="1-2.png" data-sound="click.mp3">
+            <img src="1-1.png" alt="Icon 1">
+        </div>
+        <div class="icon-item" data-hover="2-2.png" data-sound="click.mp3">
+            <img src="2-1.png" alt="Icon 2">
+        </div>
+        <div class="icon-item" data-hover="3-2.png" data-sound="click.mp3">
+            <img src="3-1.png" alt="Icon 3">
+        </div>
+        <div class="icon-item" data-hover="4-2.png" data-sound="click.mp3">
+            <img src="4-1.png" alt="Icon 4">
+        </div>
+        <div class="icon-item" data-hover="5-2.png" data-sound="click.mp3">
+            <img src="5-1.png" alt="Icon 5">
+        </div>
+        <div class="icon-item" data-hover="6-2.png" data-sound="click.mp3">
+            <img src="6-1.png" alt="Icon 6">
+        </div>
+        <div class="icon-item" data-hover="7-2.png" data-sound="click.mp3">
+            <img src="7-1.png" alt="Icon 7">
+        </div>
+        <div class="icon-item" data-hover="8-2.png" data-sound="click.mp3">
+            <img src="8-1.png" alt="Icon 8">
+        </div>
+        <div class="icon-item" data-hover="9-2.png" data-sound="click.mp3">
+            <img src="9-1.png" alt="Icon 9">
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.icon-item').forEach(item => {
+            const img = item.querySelector('img');
+            const hoverImg = item.getAttribute('data-hover');
+            const sound = new Audio(item.getAttribute('data-sound'));
+
+            item.addEventListener('mouseover', () => {
+                img.src = hoverImg; // Change the icon on hover
+                sound.play(); // Play sound on hover
+            });
+
+            item.addEventListener('mouseout', () => {
+                img.src = img.getAttribute('data-original'); // Revert the icon on mouse out
+                sound.pause();
+                sound.currentTime = 0; // Reset the sound
+            });
+
+            // Save the original image source
+            img.setAttribute('data-original', img.src);
+        });
+    </script>
+</body>
+</html>
