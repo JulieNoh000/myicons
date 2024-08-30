@@ -4,16 +4,16 @@ document.querySelectorAll('.icon-item').forEach(item => {
     const sound = new Audio(item.getAttribute('data-sound'));
 
     item.addEventListener('mouseover', () => {
-        img.src = hoverImg; // Change the icon on hover
-        sound.play(); // Play sound on hover
+        img.src = hoverImg; 
+        sound.play(); 
     });
 
     item.addEventListener('mouseout', () => {
-        img.src = img.getAttribute('data-original'); // Revert the icon on mouse out
+        img.src = img.getAttribute('data-original'); 
         sound.pause();
-        sound.currentTime = 0; // Reset the sound
+        sound.currentTime = 0; 
     });
 
-    // Save the original image source
+   
     img.setAttribute('data-original', img.src);
 });
